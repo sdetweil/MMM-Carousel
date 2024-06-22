@@ -91,7 +91,7 @@
 	    if(this.config.slideTimeout.length >0){
 	    	this.transitionTimer=null
 		for(let entry of this.config.slideTimeout){
-		   if(entry.index == this.currentIndex){
+		   if((entry.index == this.currentIndex) ||(entry.slideNumber-1==this.currentIndex){
 			this.transitionTimer=setTimeout(this.moduleTransition.bind(modules), entry.timeout)
 			break;
 		   }
