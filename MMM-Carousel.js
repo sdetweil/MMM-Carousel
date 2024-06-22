@@ -20,7 +20,8 @@
             bottom_bar: {enabled: false, ignoreModules: [], overrideTransitionInterval: 10000},
             slides: [
                 []
-            ]
+            ],
+	    slideTimeout: []
         },
 
         notificationReceived: function (notification) {
@@ -61,8 +62,10 @@
 
             modules.currentIndex = -1;
             this.moduleTransition.call(modules);
-            // We set a timer to cause the page transitions
-            this.transitionTimer = setInterval(this.moduleTransition.bind(modules), timer);
+	    if(this.config.slideTimeout.length==0){
+            	// We set a timer to cause the page transitions
+            	this.transitionTimer = setInterval(this.moduleTransition.bind(modules), timer);
+	    }
         },
 
         moduleTransition: function () {
@@ -85,6 +88,18 @@
                     this[i].hide(0);
                 }
             }
+	    if(this.config.slideTimeout.length >0){
+	    	this.transitionTimer=null
+		for(let entry of this.config.slideTimeout){
+		   if(entry.index == this.currentIndex){
+			this.transitionTimer=setTimeout(this.moduleTransition.bind(modules), entry.timeout)
+			break;
+		   }
+	        }
+		if(this.transitionTimer==null){
+			this.transitionTimer=setTimeout(this.moduleTransition.bind(modules), this.config.transitionInterval)
+		}
+	    }
         }
     });
 }());
