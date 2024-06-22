@@ -88,18 +88,25 @@
                     this[i].hide(0);
                 }
             }
-	    if(this.config.slideTimeout.length >0){
-	    	this.transitionTimer=null
-		for(let entry of this.config.slideTimeout){
-		   if((entry.index == this.currentIndex) ||(entry.slideNumber-1==this.currentIndex){
-			this.transitionTimer=setTimeout(this.moduleTransition.bind(modules), entry.timeout)
-			break;
-		   }
-	        }
-		if(this.transitionTimer==null){
-			this.transitionTimer=setTimeout(this.moduleTransition.bind(modules), this.config.transitionInterval)
-		}
-	    }
+            // if a slideTimeout list was provided
+    	    if(this.config.slideTimeout.length >0){
+                // clear the timer handle
+    	    	this.transitionTimer=null
+                // loop thru the slideTimeout list
+        		for(let entry of this.config.slideTimeout){
+                    // if this entry macthes the next slides index or number
+                    if((entry.index == this.currentIndex) ||(entry.slideNumber-1==this.currentIndex)){
+                        // start a time for next page
+                        this.transitionTimer=setTimeout(this.moduleTransition.bind(modules), entry.timeout)
+                        break;
+                    }
+        	    }
+                // if this slide wasn't found in the slideTimeout list
+        		if(this.transitionTimer==null){
+                    // use the default transitionInterval
+        			this.transitionTimer=setTimeout(this.moduleTransition.bind(modules), this.config.transitionInterval)
+        		}
+    	    }
         }
     });
 }());

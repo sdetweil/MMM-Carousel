@@ -11,7 +11,7 @@ Run these commands at the root of your magic mirror install.
 
 ```shell
 cd modules
-git clone https://github.com/barnabycolby/MMM-Carousel
+git clone https://github.com/sdetweil/MMM-Carousel
 ```
 
 ## Using the module
@@ -99,7 +99,28 @@ The following properties can be configured:
         				<br><b>Possible values:</b> <code>array of String array</code>
                         <br><b>Default value:</b> <code>[[]]</code>
         			</td>
-        		</tr>
+        </tr>
+		<tr>
+					<td><code>slideTimeout</code></td>
+					<td>An array of structures.  <br>
+					Each structure has two values
+					<ul>
+					    <li>slideNumber: number of slide in the slides array (first slide is 1)</li>
+						<li>   timeout:  milliseconds this slide should be displayed</li>
+					</ul>
+					Example<br>
+						<code>   
+						{ slideNumber: 9, timeout: 5*60*1000}, // 5 minutes in milliseconds<br>
+						{ slideNumber: 2, timeout: 1*60*1000} // 1 minute in milliseconds
+						</code>
+					<br><br>you can have as many of these as needed to address different timing requirements.  in any order. <br><br>
+					if a slide is not listed in the slideTimeout list, it will get the 
+					<code>transitionInterval</code> display time.
+						<br> <br> This value is <b>OPTIONAL</b>
+        				<br><b>Possible values:</b> <code>array of structures</code>
+                        <br><b>Default value:</b> <code>[]</code>
+        			</td>
+		</tr>
 	</tbody>
 </table>
 
