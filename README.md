@@ -109,10 +109,10 @@ The following properties can be configured:
 						<li>   timeout:  milliseconds this slide should be displayed</li>
 					</ul>
 					Example<br>
-						<code>   
-						{ slideNumber: 9, timeout: 5*60*1000}, // 5 minutes in milliseconds<br>
-						{ slideNumber: 2, timeout: 1*60*1000} // 1 minute in milliseconds
-						</code>
+					<code>   
+					{ slideNumber: 9, timeout: 5*60*1000}, // 5 minutes in milliseconds<br>
+					{ slideNumber: 2, timeout: 1*60*1000} // 1 minute in milliseconds
+					</code>
 					<br><br>you can have as many of these as needed to address different timing requirements.  in any order. <br><br>
 					if a slide is not listed in the slideTimeout list, it will get the 
 					<code>transitionInterval</code> display time.
